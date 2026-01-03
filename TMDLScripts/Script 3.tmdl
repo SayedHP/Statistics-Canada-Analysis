@@ -1,0 +1,9 @@
+createOrReplace
+
+	ref table DataFileRecordLayout
+
+		measure 'Female Percentage' = DIVIDE([Female Graduates], [Total Graduates], 0)
+			lineageTag: 622e49f7-3d53-44f2-b557-40c9427b1088
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+

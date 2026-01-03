@@ -1,0 +1,256 @@
+createOrReplace
+
+	table DataFileRecordLayout
+		lineageTag: a1fb0955-333a-4eec-b217-545208c28e69
+
+		measure 'Total Graduates' = SUM('DataFileRecordLayout'[VALUE])
+			lineageTag: 79be8270-6c72-44c3-a03a-8cd1a6c3fe0c
+
+		measure 'Female Percentage' = DIVIDE([Female Graduates], [Total Graduates], 0)
+			lineageTag: 622e49f7-3d53-44f2-b557-40c9427b1088
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		measure 'Female Graduates' = ```
+				CALCULATE([Total Graduates], 'DataFileRecordLayout'[Gender] = "Woman")
+				```
+			formatString: 0
+			lineageTag: cdcbf9ac-b99a-4157-a151-63c6a9639387
+
+		measure 'Number of Provinces' = ```
+				DISTINCTCOUNT('DataFileRecordLayout'[GEO])
+				```
+			formatString: 0
+			lineageTag: 2b5f1d5f-888e-49d3-addb-0fbeaeef8fab
+
+		measure 'First Year' = ```
+				MIN('DataFileRecordLayout'[REF_DATE])
+				```
+			lineageTag: 2494f880-6507-46b9-86db-c6351a2e97cf
+
+		measure 'Last Year' = MAX('DataFileRecordLayout'[REF_DATE])
+			lineageTag: d198c552-2474-45b7-993f-2c8dab33f2f0
+
+		measure 'Graduates YofY Change (%)' = ```
+
+				VAR CurrentYear = SELECTEDVALUE('DataFileRecordLayout'[REF_DATE])
+				VAR LastYearValue =
+				    CALCULATE(
+				        [Total Graduates],
+				        'DataFileRecordLayout'[REF_DATE] = CurrentYear - 1
+				    )
+				RETURN
+				    DIVIDE([Total Graduates] - LastYearValue, LastYearValue, 0)
+				```
+			formatString: 0
+			lineageTag: 6d31e9b1-bff2-4aee-82ac-c6f5cb3f8202
+
+		column REF_DATE
+			dataType: string
+			lineageTag: a29cb527-f29b-44bb-a084-dfc417cf812e
+			summarizeBy: none
+			sourceColumn: REF_DATE
+
+			annotation SummarizationSetBy = Automatic
+
+		column GEO
+			dataType: string
+			lineageTag: 37ea332f-ad78-4384-9781-15ed0047258f
+			summarizeBy: none
+			sourceColumn: GEO
+
+			annotation SummarizationSetBy = Automatic
+
+		column DGUID
+			dataType: string
+			lineageTag: f8a49af2-822b-48ce-bdc2-2b76e12826df
+			summarizeBy: none
+			sourceColumn: DGUID
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Educational qualification'
+			dataType: string
+			lineageTag: d79f211b-a9dd-4174-807e-475824420ec1
+			summarizeBy: none
+			sourceColumn: Educational qualification
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Field of study'
+			dataType: string
+			lineageTag: 802f47bd-a465-4550-8c1d-5065944d8cc8
+			summarizeBy: none
+			sourceColumn: Field of study
+
+			annotation SummarizationSetBy = Automatic
+
+		column Gender
+			dataType: string
+			lineageTag: a0aea7e3-9197-4124-98a7-39ba2982b587
+			summarizeBy: none
+			sourceColumn: Gender
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Age group'
+			dataType: string
+			lineageTag: 29a6a039-31c6-4c6c-9248-7586ae373a1b
+			summarizeBy: none
+			sourceColumn: Age group
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Population group'
+			dataType: string
+			lineageTag: 7d173498-4d6b-4167-a6a3-97571aa92fb4
+			summarizeBy: none
+			sourceColumn: Population group
+
+			annotation SummarizationSetBy = Automatic
+
+		column Indicator
+			dataType: string
+			lineageTag: 0a4fb6e7-658a-44c1-b27f-aea49872a26c
+			summarizeBy: none
+			sourceColumn: Indicator
+
+			annotation SummarizationSetBy = Automatic
+
+		column UOM
+			dataType: string
+			lineageTag: 07f68bd8-efe6-49b4-9e85-f6241ce26877
+			summarizeBy: none
+			sourceColumn: UOM
+
+			annotation SummarizationSetBy = Automatic
+
+		column UOM_ID
+			dataType: int64
+			formatString: 0
+			lineageTag: f5e326b3-1daf-4859-9bf6-3fc532bed629
+			summarizeBy: count
+			sourceColumn: UOM_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column SCALAR_FACTOR
+			dataType: string
+			lineageTag: 03fa076d-ccb0-435b-ad7d-2a846353a00b
+			summarizeBy: none
+			sourceColumn: SCALAR_FACTOR
+
+			annotation SummarizationSetBy = Automatic
+
+		column SCALAR_ID
+			dataType: int64
+			formatString: 0
+			lineageTag: 63df3d7e-4175-4124-bfea-c64e8260be4c
+			summarizeBy: count
+			sourceColumn: SCALAR_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column VECTOR
+			dataType: string
+			lineageTag: c89fd9de-19bd-4372-a4af-fa439000ecae
+			summarizeBy: none
+			sourceColumn: VECTOR
+
+			annotation SummarizationSetBy = Automatic
+
+		column COORDINATE
+			dataType: string
+			lineageTag: 34663638-4d91-4570-9e73-c8db83fd7031
+			summarizeBy: none
+			sourceColumn: COORDINATE
+
+			annotation SummarizationSetBy = Automatic
+
+		column VALUE
+			dataType: int64
+			formatString: 0
+			lineageTag: 6603b44a-1542-4b7c-9ec2-2deccc406cb7
+			summarizeBy: sum
+			sourceColumn: VALUE
+
+			annotation SummarizationSetBy = Automatic
+
+		column STATUS
+			dataType: string
+			lineageTag: 1b11f6dc-16c0-4d01-be63-69096680068f
+			summarizeBy: none
+			sourceColumn: STATUS
+
+			annotation SummarizationSetBy = Automatic
+
+		column SYMBOL
+			dataType: string
+			lineageTag: 8a55889f-73c7-47cb-9a58-7fffbec131fe
+			summarizeBy: none
+			sourceColumn: SYMBOL
+
+			annotation SummarizationSetBy = Automatic
+
+		column TERMINATED
+			dataType: string
+			lineageTag: 35cb6754-38da-46ce-8067-540064ae4313
+			summarizeBy: none
+			sourceColumn: TERMINATED
+
+			annotation SummarizationSetBy = Automatic
+
+		column DECIMALS
+			dataType: int64
+			formatString: 0
+			lineageTag: 29b23c78-b5cb-4898-9af6-b284bbf16885
+			summarizeBy: sum
+			sourceColumn: DECIMALS
+
+			annotation SummarizationSetBy = Automatic
+
+		partition DataFileRecordLayout = m
+			mode: import
+			source = 
+					let
+						Source = Csv.Document(
+							File.Contents("C:\Users\hashe\Downloads\37100268-eng\37100268.csv"),
+							[
+								Delimiter = ",",
+								Columns = 20,
+								Encoding = 65001,
+								QuoteStyle = QuoteStyle.None
+							]
+						),
+						#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+						#"Changed Type" = Table.TransformColumnTypes(
+							#"Promoted Headers",
+							{
+								{"REF_DATE", type text},
+								{"GEO", type text},
+								{"DGUID", type text},
+								{"Educational qualification", type text},
+								{"Field of study", type text},
+								{"Gender", type text},
+								{"Age group", type text},
+								{"Population group", type text},
+								{"Indicator", type text},
+								{"UOM", type text},
+								{"UOM_ID", Int64.Type},
+								{"SCALAR_FACTOR", type text},
+								{"SCALAR_ID", Int64.Type},
+								{"VECTOR", type text},
+								{"COORDINATE", type text},
+								{"VALUE", Int64.Type},
+								{"STATUS", type text},
+								{"SYMBOL", type text},
+								{"TERMINATED", type text},
+								{"DECIMALS", Int64.Type}
+							}
+						)
+					in
+						#"Changed Type"
+
+		changedProperty = Name
+
+		annotation PBI_ResultType = Table

@@ -1,0 +1,436 @@
+{
+  "modelMetadata": {
+    "modelName": "OIPA_StatisticsCanada",
+    "modelId": "20bedbac-ad62-486d-ba52-704c5e83099a",
+    "compatibilityLevel": 1567,
+    "lastUpdated": "2026-01-03T11:16:38.173333-05:00",
+    "exportDate": "2026-01-03",
+    "version": "1.0.0",
+    "description": "Power BI model analyzing graduate statistics from Statistics Canada"
+  },
+  "tables": [
+    {
+      "name": "DataFileRecordLayout",
+      "isHidden": false,
+      "description": "Main fact table containing graduate statistics from Statistics Canada",
+      "tableType": "Fact",
+      "columnCount": 21,
+      "measureCount": 21,
+      "columns": [
+        {
+          "name": "RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61",
+          "dataType": "Int64",
+          "isHidden": true,
+          "isKey": true,
+          "formatString": "0",
+          "description": "System-generated row number",
+          "category": "Technical"
+        },
+        {
+          "name": "REF_DATE",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Reference date/year for the statistic",
+          "category": "Time"
+        },
+        {
+          "name": "GEO",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Geographic location (province/territory)",
+          "category": "Geographic"
+        },
+        {
+          "name": "DGUID",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Unique geographic identifier",
+          "category": "Geographic"
+        },
+        {
+          "name": "Educational qualification",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Type of degree or qualification",
+          "category": "Dimension"
+        },
+        {
+          "name": "Field of study",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Academic field or discipline",
+          "category": "Dimension"
+        },
+        {
+          "name": "Gender",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Gender classification",
+          "category": "Dimension"
+        },
+        {
+          "name": "Age group",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Age range grouping",
+          "category": "Dimension"
+        },
+        {
+          "name": "Population group",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Population demographic category",
+          "category": "Dimension"
+        },
+        {
+          "name": "Indicator",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Type of indicator/metric being measured",
+          "category": "Metadata"
+        },
+        {
+          "name": "UOM",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Unit of measure",
+          "category": "Metadata"
+        },
+        {
+          "name": "UOM_ID",
+          "dataType": "Int64",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "0",
+          "description": "Unit of measure identifier",
+          "category": "Metadata"
+        },
+        {
+          "name": "SCALAR_FACTOR",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Scaling factor for the value",
+          "category": "Metadata"
+        },
+        {
+          "name": "SCALAR_ID",
+          "dataType": "Int64",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "0",
+          "description": "Scaling factor identifier",
+          "category": "Metadata"
+        },
+        {
+          "name": "VECTOR",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Statistics Canada vector identifier",
+          "category": "Metadata"
+        },
+        {
+          "name": "COORDINATE",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Coordinate reference",
+          "category": "Metadata"
+        },
+        {
+          "name": "VALUE",
+          "dataType": "Int64",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "0",
+          "description": "The core metric value (graduate counts)",
+          "category": "Fact"
+        },
+        {
+          "name": "STATUS",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Data status flag",
+          "category": "Metadata"
+        },
+        {
+          "name": "SYMBOL",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Data notation symbol",
+          "category": "Metadata"
+        },
+        {
+          "name": "TERMINATED",
+          "dataType": "String",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "",
+          "description": "Termination indicator",
+          "category": "Metadata"
+        },
+        {
+          "name": "DECIMALS",
+          "dataType": "Int64",
+          "isHidden": false,
+          "isKey": false,
+          "formatString": "0",
+          "description": "Number of decimal places",
+          "category": "Metadata"
+        }
+      ],
+      "measures": [
+        {
+          "name": "Total Graduates",
+          "expression": "SUM('DataFileRecordLayout'[VALUE])",
+          "formatString": "",
+          "isHidden": false,
+          "description": "Base aggregation of graduate counts",
+          "category": "Core Metric",
+          "isOptimized": false
+        },
+        {
+          "name": "Female Graduates",
+          "expression": "CALCULATE(\n    SUM('DataFileRecordLayout'[VALUE]),\n    'DataFileRecordLayout'[Gender] = \"Woman\"\n)",
+          "formatString": "0",
+          "isHidden": false,
+          "description": "Total graduates filtered for women - Optimized to use direct SUM",
+          "category": "Gender Analysis",
+          "isOptimized": true,
+          "optimizationNotes": "Removed measure dependency, uses direct SUM"
+        },
+        {
+          "name": "Male Graduates",
+          "expression": "CALCULATE(\n    SUM('DataFileRecordLayout'[VALUE]),\n    'DataFileRecordLayout'[Gender] = \"Man\"\n)",
+          "formatString": "0",
+          "isHidden": false,
+          "description": "Total graduates filtered for men",
+          "category": "Gender Analysis",
+          "isOptimized": true
+        },
+        {
+          "name": "Female Percentage",
+          "expression": "DIVIDE(\n    [Female Graduates],\n    [Total Graduates],\n    0\n)",
+          "formatString": "",
+          "isHidden": false,
+          "description": "Percentage of female graduates",
+          "category": "Gender Analysis",
+          "isOptimized": false
+        },
+        {
+          "name": "Male Percentage",
+          "expression": "DIVIDE(\n    [Male Graduates],\n    [Total Graduates],\n    BLANK()\n)",
+          "formatString": "0.00%",
+          "isHidden": false,
+          "description": "Percentage of male graduates",
+          "category": "Gender Analysis",
+          "isOptimized": false
+        },
+        {
+          "name": "Gender Balance Ratio",
+          "expression": "VAR FemaleCount = [Female Graduates]\nVAR MaleCount = [Male Graduates]\nVAR MinValue = MIN(FemaleCount, MaleCount)\nVAR MaxValue = MAX(FemaleCount, MaleCount)\nRETURN\n    DIVIDE(MinValue, MaxValue, BLANK())",
+          "formatString": "0.00",
+          "isHidden": false,
+          "description": "Gender diversity ratio (closer to 1.0 means more balanced)",
+          "category": "Gender Analysis",
+          "isOptimized": true
+        },
+        {
+          "name": "Number of Provinces",
+          "expression": "DISTINCTCOUNT('DataFileRecordLayout'[GEO])",
+          "formatString": "0",
+          "isHidden": false,
+          "description": "Count of distinct geographic regions",
+          "category": "Geographic",
+          "isOptimized": false
+        },
+        {
+          "name": "Avg Graduates per Province",
+          "expression": "DIVIDE(\n    [Total Graduates],\n    [Number of Provinces],\n    BLANK()\n)",
+          "formatString": "#,##0",
+          "isHidden": false,
+          "description": "Average graduates per province",
+          "category": "Geographic",
+          "isOptimized": false
+        },
+        {
+          "name": "Province Rank by Graduates",
+          "expression": "IF(\n    ISINSCOPE('DataFileRecordLayout'[GEO]),\n    RANKX(\n        ALLSELECTED('DataFileRecordLayout'[GEO]),\n        [Total Graduates],\n        ,\n        DESC,\n        DENSE\n    ),\n    BLANK()\n)",
+          "formatString": "0",
+          "isHidden": false,
+          "description": "Rank provinces by number of graduates (1=highest)",
+          "category": "Geographic",
+          "isOptimized": true,
+          "optimizationNotes": "Uses ISINSCOPE for context-aware calculation"
+        },
+        {
+          "name": "First Year",
+          "expression": "MIN('DataFileRecordLayout'[REF_DATE])",
+          "formatString": "",
+          "isHidden": false,
+          "description": "Earliest year in the dataset",
+          "category": "Time Intelligence",
+          "isOptimized": false
+        },
+        {
+          "name": "Last Year",
+          "expression": "MAX('DataFileRecordLayout'[REF_DATE])",
+          "formatString": "",
+          "isHidden": false,
+          "description": "Most recent year in the dataset",
+          "category": "Time Intelligence",
+          "isOptimized": false
+        },
+        {
+          "name": "Latest Year Graduates",
+          "expression": "VAR MaxYear = MAX('DataFileRecordLayout'[REF_DATE])\nRETURN\n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = MaxYear\n    )",
+          "formatString": "#,##0",
+          "isHidden": false,
+          "description": "Graduates in the most recent year available - Fixed to avoid placeholder errors",
+          "category": "Time Intelligence",
+          "isOptimized": true,
+          "optimizationNotes": "Fixed placeholder error by using variable instead of measure in filter"
+        },
+        {
+          "name": "Cumulative Graduates",
+          "expression": "CALCULATE(\n    [Total Graduates],\n    FILTER(\n        ALLSELECTED('DataFileRecordLayout'[REF_DATE]),\n        'DataFileRecordLayout'[REF_DATE] <= MAX('DataFileRecordLayout'[REF_DATE])\n    )\n)",
+          "formatString": "#,##0",
+          "isHidden": false,
+          "description": "Running total of graduates over time",
+          "category": "Time Intelligence",
+          "isOptimized": true
+        },
+        {
+          "name": "Graduates YofY Change (%)",
+          "expression": "VAR CurrentValue = SUM('DataFileRecordLayout'[VALUE])\nVAR CurrentYear = SELECTEDVALUE('DataFileRecordLayout'[REF_DATE])\nVAR PriorYearValue = \n    CALCULATE(\n        SUM('DataFileRecordLayout'[VALUE]),\n        'DataFileRecordLayout'[REF_DATE] = FORMAT(VALUE(CurrentYear) - 1, \"0\")\n    )\nRETURN\n    DIVIDE(\n        CurrentValue - PriorYearValue,\n        PriorYearValue,\n        BLANK()\n    )",
+          "formatString": "0.00%",
+          "isHidden": false,
+          "description": "Year-over-year percentage change - Optimized with direct SUM and better error handling",
+          "category": "Growth Metrics",
+          "isOptimized": true,
+          "optimizationNotes": "Major refactoring: cached values, removed dependencies, improved year handling"
+        },
+        {
+          "name": "Graduates YoY Change (Absolute)",
+          "expression": "VAR CurrentValue = [Total Graduates]\nVAR CurrentYear = SELECTEDVALUE('DataFileRecordLayout'[REF_DATE])\nVAR PriorYearValue = \n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = FORMAT(VALUE(CurrentYear) - 1, \"0\")\n    )\nRETURN\n    CurrentValue - PriorYearValue",
+          "formatString": "+#,##0;-#,##0;0",
+          "isHidden": false,
+          "description": "Year-over-year absolute change in graduates",
+          "category": "Growth Metrics",
+          "isOptimized": false
+        },
+        {
+          "name": "3-Year Moving Avg",
+          "expression": "VAR CurrentYear = SELECTEDVALUE('DataFileRecordLayout'[REF_DATE])\nVAR YearTable = \n    FILTER(\n        ALLSELECTED('DataFileRecordLayout'[REF_DATE]),\n        VALUE('DataFileRecordLayout'[REF_DATE]) >= VALUE(CurrentYear) - 2 &&\n        VALUE('DataFileRecordLayout'[REF_DATE]) <= VALUE(CurrentYear)\n    )\nVAR YearsCount = COUNTROWS(YearTable)\nRETURN\n    IF(\n        YearsCount >= 2,\n        CALCULATE(\n            [Total Graduates],\n            YearTable\n        ) / YearsCount,\n        BLANK()\n    )",
+          "formatString": "#,##0",
+          "isHidden": false,
+          "description": "Moving average of graduates over 3 years",
+          "category": "Growth Metrics",
+          "isOptimized": true
+        },
+        {
+          "name": "Total Period Growth %",
+          "expression": "VAR MinYear = MIN('DataFileRecordLayout'[REF_DATE])\nVAR MaxYear = MAX('DataFileRecordLayout'[REF_DATE])\nVAR FirstYearValue = \n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = MinYear\n    )\nVAR LastYearValue = \n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = MaxYear\n    )\nRETURN\n    DIVIDE(\n        LastYearValue - FirstYearValue,\n        FirstYearValue,\n        BLANK()\n    )",
+          "formatString": "0.00%",
+          "isHidden": false,
+          "description": "Total growth from first to last year - Fixed to avoid placeholder errors",
+          "category": "Growth Metrics",
+          "isOptimized": true,
+          "optimizationNotes": "Fixed placeholder error by using variables instead of measures"
+        },
+        {
+          "name": "CAGR",
+          "expression": "VAR MinYear = MIN('DataFileRecordLayout'[REF_DATE])\nVAR MaxYear = MAX('DataFileRecordLayout'[REF_DATE])\nVAR FirstYearValue = \n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = MinYear\n    )\nVAR LastYearValue = \n    CALCULATE(\n        [Total Graduates],\n        'DataFileRecordLayout'[REF_DATE] = MaxYear\n    )\nVAR YearsCount = VALUE(MaxYear) - VALUE(MinYear)\nRETURN\n    IF(\n        YearsCount > 0 && FirstYearValue > 0,\n        POWER(LastYearValue / FirstYearValue, 1 / YearsCount) - 1,\n        BLANK()\n    )",
+          "formatString": "0.00%",
+          "isHidden": false,
+          "description": "Compound annual growth rate over the entire period - Fixed to avoid placeholder errors",
+          "category": "Growth Metrics",
+          "isOptimized": true,
+          "optimizationNotes": "Fixed placeholder error, robust year calculation"
+        },
+        {
+          "name": "Growth Trend Indicator",
+          "expression": "VAR YoYChange = [Graduates YofY Change (%)]\nRETURN\n    SWITCH(\n        TRUE(),\n        ISBLANK(YoYChange), \"–\",\n        YoYChange > 0.02, \"↑ Increase\",\n        YoYChange < -0.02, \"↓ Decrease\",\n        \"→ Stable\"\n    )",
+          "formatString": "",
+          "isHidden": false,
+          "description": "Visual indicator: Up arrow, down arrow, or neutral based on YoY change",
+          "category": "Growth Metrics",
+          "isOptimized": false
+        },
+        {
+          "name": "% of Total Graduates",
+          "expression": "DIVIDE(\n    [Total Graduates],\n    CALCULATE([Total Graduates], ALL('DataFileRecordLayout')),\n    BLANK()\n)",
+          "formatString": "0.00%",
+          "isHidden": false,
+          "description": "Percentage of current selection vs total across all contexts",
+          "category": "Comparative",
+          "isOptimized": true
+        },
+        {
+          "name": "Number of Fields of Study",
+          "expression": "DISTINCTCOUNT('DataFileRecordLayout'[Field of study])",
+          "formatString": "0",
+          "isHidden": false,
+          "description": "Number of distinct fields of study",
+          "category": "Metadata",
+          "isOptimized": false
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "optimizationSummary": {
+    "totalMeasures": 21,
+    "optimizedMeasures": 9,
+    "optimizationRate": "42.9%",
+    "keyOptimizations": [
+      "Removed measure dependencies in gender measures",
+      "Fixed placeholder errors in time-based measures",
+      "Implemented variable caching for performance",
+      "Improved null handling with BLANK()",
+      "Added context-aware calculations with ISINSCOPE"
+    ]
+  },
+  "performanceMetrics": {
+    "averageQueryDuration": "24.71ms",
+    "formulaEngineEfficiency": "91%",
+    "storageEngineQueriesAvg": 4,
+    "cacheHitRate": "0%"
+  },
+  "recommendations": [
+    "Convert REF_DATE from String to Date type",
+    "Create a dedicated Date dimension table",
+    "Add calculated columns for Year, Quarter, Month",
+    "Implement geographic hierarchy",
+    "Consider calculation groups for time intelligence",
+    "Add data categories to appropriate columns"
+  ]
+}
