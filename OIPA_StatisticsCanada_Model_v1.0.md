@@ -1,8 +1,4 @@
 # OIPA Statistics Canada - Power BI Model Documentation
-**Model ID:** 20bedbac-ad62-486d-ba52-704c5e83099a  
-**Compatibility Level:** 1567  
-**Last Updated:** 2026-01-03 11:16:38  
-**Export Date:** 2026-01-03  
 
 ---
 
@@ -443,7 +439,3 @@ For Git version control:
 - Consider exporting to TMDL folder structure for full version control
 
 ---
-
-*Document generated: 2026-01-03*  
-*Model: OIPA_StatisticsCanada*  
-*Tool: Power BI Desktop MCP Server*
