@@ -4,7 +4,7 @@
 
 ## Model Overview
 
-This Power BI model analyzes graduate statistics from Statistics Canada, tracking educational outcomes across:
+This Semantic model analyzes graduate statistics from Statistics Canada, tracking educational outcomes across:
 - Geographic regions (provinces)
 - Fields of study
 - Educational qualifications
