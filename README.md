@@ -427,15 +427,3 @@ The following measures have been optimized for performance:
 6. **Data Categories** - Mark columns appropriately (Geographic, Date, etc.)
 
 ---
-
-## Version Control
-
-Save this file as: `OIPA_StatisticsCanada_Model_v1.0.md`
-
-For Git version control:
-- Track this file in your repository
-- Update version number with each schema change
-- Document measure changes in commit messages
-- Consider exporting to TMDL folder structure for full version control
-
----
